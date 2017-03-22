@@ -1,13 +1,14 @@
 OS_PERMS=sudo
 ALPINE_FS=https://cryo.unixvoid.com/bin/filesystem/alpine/linux-latest-amd64.rootfs.tar.gz
 
-all:	build_aci
+all build:	build_aci
 
 prep_aci:
 	mkdir -p alpine-layout/rootfs/
 	wget -O rootfs.tar.gz $(ALPINE_FS)
 	tar -xzf rootfs.tar.gz -C alpine-layout/rootfs/
-	cp manifest.json alpine-layout/manifest
+	cp deps/resolv.conf alpine-layout/rootfs/etc/
+	cp deps/manifest.json alpine-layout/manifest
 	rm rootfs.tar.gz
 
 build_aci:	prep_aci

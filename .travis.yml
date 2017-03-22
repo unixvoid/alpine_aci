@@ -13,7 +13,7 @@ after_success:
   - curl -d sec=$BINDER_SEC -d key=unixvoid.pub https://cryo.unixvoid.com/getfile --output unixvoid.pub
   - curl -d sec=$BINDER_SEC -d key=unixvoid.sec https://cryo.unixvoid.com/getfile --output unixvoid.sec
   # sign aci
-  - chmod +x sign.sh
+  - cp deps/sign.sh . && chmod +x sign.sh
   - ./sign.sh $GPG_SEC
   # upload binder aci image
   - curl -i --form sec=$BINDER_SEC --form file=@alpine-latest-linux-amd64.aci --form path=rkt/alpine/ https://cryo.unixvoid.com/upload
