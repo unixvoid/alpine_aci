@@ -16,6 +16,15 @@
             "value": "linux"
         }
     ],
+    "app": {
+        "user": "root",
+        "group": "root",
+        "exec": [
+            "/usr/bin/tail",
+	    "-f",
+	    "/dev/null"
+        ]
+    },
     "annotations": [
         {
         "name": "authors",
